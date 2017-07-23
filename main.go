@@ -9,10 +9,24 @@ import (
 	"log"
 	"os"
 
+	"flag"
+
+	"github.com/fatih/color"
 	"github.com/ryanuber/columnize"
 )
 
+func init() {
+	log.SetFlags(log.Lshortfile | log.LstdFlags)
+}
+
+var (
+	comparisonHash string
+)
+
 func main() {
+	flag.StringVar(&comparisonHash, "c", "", "chk -c {hash} {file or files}")
+	flag.Parse()
+
 	if len(os.Args) == 1 {
 		fmt.Println("please provide a file to chk")
 	}
@@ -37,6 +51,11 @@ func main() {
 		// pop everything into lines to columnize the output
 		lines = append(lines, fmt.Sprintf("file: | %s", arg))
 		for key, value := range hashes {
+			// If performing a comparison, green print the matching hash
+			if comparisonHash != "" && comparisonHash == value {
+				lines = append(lines, fmt.Sprintf("%s: | %s\n", key, color.GreenString(value)))
+				continue
+			}
 			lines = append(lines, fmt.Sprintf("%s: | %s\n", key, value))
 		}
 		r := columnize.SimpleFormat(lines)
