@@ -1,6 +1,14 @@
 # chk
 chk your file hashes
 
+## Install
+
+`go get github.com/LadyDascalie/chk`
+
+Or just grab one of the [releases](https://github.com/LadyDascalie/chk/releases)
+
+## Examples
+
 ```
 chk file.txt
 
