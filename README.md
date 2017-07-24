@@ -3,9 +3,9 @@ chk your file hashes
 
 ## Install
 
-`go get github.com/LadyDascalie/chk`
+`go get github.com/ladydascalie/chk`
 
-Or just grab one of the [releases](https://github.com/LadyDascalie/chk/releases)
+Or just grab one of the [releases](https://github.com/ladydascalie/chk/releases)
 
 ## Examples
 
